@@ -1,0 +1,18 @@
+ds:
+  connection:
+    driver_class: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.209.198.230:10001/paas_service_db?characterEncoding=utf-8&allowMultiQueries=true
+    username: paas_service
+    password: hK4rvPhYVPPwD24rMecsZ0/RdZm18j3iMFXrlrcfQ9xdBYnLfDjqYpeNS2BL7NWfPwIZ24mwATSmeW60xAUNgQ==
+eureka:
+  client:
+    service-url:
+      defaultZone: http://10.209.198.78:9091/eureka
+  status:
+    open: true
+server:
+  port: 8890
+
+token:
+  accessfilter:
+    isopen: false

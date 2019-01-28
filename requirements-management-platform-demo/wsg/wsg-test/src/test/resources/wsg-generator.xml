@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsg-generator-config>
+    <!-- 生成表所在数据库连接信息配置项 。注：每次只能配置一个数据源，一个MySQL或一个Oracle。 -->
+    <ds>
+        <!-- Mysql 数据源配置 -->
+        <connection>
+            <driver_class>com.mysql.jdbc.Driver</driver_class>
+            <url>jdbc:mysql://172.21.11.78:3306/paas_service_platform_v2?useUnicode=true&amp;characterEncoding=UTF-8</url>
+            <username>paas_service_platform_develop</username>
+            <password>paas_service_platform_develop123#</password>
+        </connection>
+        <!-- Oracle 数据源配置 -->
+        <!--<connection>-->
+        <!--<driver_class>oracle.jdbc.driver.OracleDriver</driver_class>-->
+        <!--<url>jdbc:oracle:thin:@(DESCRIPTION=-->
+        <!--(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.21.0.69)(PORT=1521)))-->
+        <!--(CONNECT_DATA=(SERVICE_NAME=e3cloud)))</url>-->
+        <!--<username>SSDBOMC1</username>-->
+        <!--<password>SSDBOMC1</password>-->
+        <!--</connection>-->
+        <!--<connection>-->
+        <!--<driver_class>oracle.jdbc.driver.OracleDriver</driver_class>-->
+        <!--<url>jdbc:oracle:thin:@172.21.0.69:1661:csdyfdb</url>-->
+        <!--&lt;!&ndash; 注意，Oracle版本的username必须⼤大写 &ndash;&gt;-->
+        <!--<username>SH_IRMS</username>-->
+        <!--<password>sh_irms</password>-->
+        <!--</connection>-->
+    </ds>
+    <!-- 生成代码所在包路径配置。
+		dao为dao层生成Mapper时配置的路径，路径截止到po及mapper的上一级package即可，
+   		ai为ai代码存放package的路径，
+   		app为app代码存放package的路径，
+   		wsg为wsg代码存放package的路径。 -->
+    <package>
+        <path>
+            <dao>com.sitech.cmap.dao.simple.test</dao>
+            <ai>com.sitech.cmap.test.ai.service</ai>
+            <app>com.sitech.cmap.test.app.service</app>
+            <wsg>com.sitech.cmap.test.wsg.controller.service</wsg>
+        </path>
+        <!-- 新增本地代码生成前端工程基础路径，注意结尾没有 / -->
+        <html>
+        	<!-- Linux系统 -->
+        	<!-- <base_path>/Users/onepiece/HBuilderProjects/super-op-web-view-2.0.0-SNAPSHOT/paas_v3_op_web_view</base_path> -->
+        	<!-- Windows系统 -->
+            <base_path>F:/PaaS/super-op-web-view-2.0.0-SNAPSHOT/paas_v3_op_web_view</base_path>
+        </html>
+    </package>
+    <!-- 代码创建人、代码开发人员Notes id -->
+    <comment>
+        <author>licf_csd</author>
+    </comment>
+    <!-- 需要生成的表名称配置，多个表配置多行 <table name="表名">**</table> 或 <view name="视图表名">**</view>即可。
+    	注：表和视图不可同时生成，每次只能单独生成表或视图。
+
+    	命令参数详解：
+    	-Dgenerate_type=all
+    		支持选项：all(生成java代码及html代码) java(默认java，只生成java代码) html(只生成html代码)
+		-Dis_date_format=true
+			支持选项：true(自动追加Date类型字段的@JsonFormat注解) false(默认false)
+		-Dis_view=true
+			支持选项：true(视图生成，生成的java和html代码不支持新增、修改、删除操作) false(默认false) -->
+    <generate>
+        <!-- 使用如下Maven命令：wsg-generator:generate -Dis_date_format=true -->
+        <tables>
+            <!-- 老版本配置 -->
+        	<!-- <table>paas_cart</table>
+        	<table>paas_order_detail</table> -->
+
+            <!-- 新版本配置 -->
+            <table name="paas_help_manual">
+                <!-- 新增本地代码生成前端工程 apps js/tpl 保存路径，注意开头有 /，js子文件夹、tpl子文件夹会自动追加-->
+                <ui_apps_path>/apps/paas/cart</ui_apps_path>
+                <!-- 新增本地代码生成前端工程 page html 保存路径，注意开头有 / -->
+                <ui_npage_path>/npage/paas/cart</ui_npage_path>
+            </table>
+        </tables>
+        <!-- 使用如下Maven命令：wsg-generator:generate -Dis_view=true -Dis_date_format=true -->
+        <views>
+            <!-- 老版本配置 -->
+            <!-- <view>paas_spec_item_view</view>
+            <view>paas_service_catalog_view</view> -->
+
+            <!-- 新版本配置 -->
+            <!-- <view name="paas_spec_relation_item_view">
+                <ui_apps_path>/apps/paas/yunfei</ui_apps_path>
+                <ui_npage_path>/npage/paas/yunfei</ui_npage_path>
+            </view> -->
+        </views>
+    </generate>
+</wsg-generator-config>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>dao-test</module>
+    </modules>
+    <parent>
+        <groupId>com.sitech.cmap.requirements-management-platform</groupId>
+        <artifactId>requirements-management-platform-top</artifactId>
+        <version>3.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.sitech.cmap.requirements-management-platform.dao</groupId>
+    <artifactId>dao-simple-top</artifactId>
+    <packaging>pom</packaging>
+    <properties>
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <!--  XML生成路径  -->
+        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.version>3.3.8</mapper.version>
+    </properties>
+    <name>dao-simple-top</name>
+    <description>Dao simple top</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator-maven-plugin.version}</version>
+
+                <configuration>
+                    <configurationFile>${configurationFile}</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-connector-java.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>${mybatis-generator-maven-plugin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.mybatis</groupId>
+                        <artifactId>mybatis</artifactId>
+                        <version>${mybatis.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>${mapper.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>${framework.groupid}</groupId>
+            <artifactId>fw-core</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${framework.groupid}</groupId>
+            <artifactId>fw-dao-mbt-simple</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${framework.groupid}</groupId>
+            <artifactId>fw-ds</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${framework.groupid}</groupId>
+            <artifactId>fw-ut</artifactId>
+            <version>${framework.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>table</id>
+            <properties>
+                <mapper.mapper>com.sitech.cmap.fw.dao.simple.mbt.TableMapper</mapper.mapper>
+                <configurationFile>src/test/resources/generator/table-config.xml</configurationFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>view</id>
+            <properties>
+                <mapper.mapper>com.sitech.cmap.fw.dao.simple.mbt.ViewMapper</mapper.mapper>
+                <configurationFile>src/test/resources/generator/view-config.xml</configurationFile>
+            </properties>
+        </profile>
+    </profiles>
+</project>

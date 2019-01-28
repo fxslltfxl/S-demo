@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sitech.cmap.dao.simple.test.mapper.PaasHelpManualMapper">
+  <resultMap id="BaseResultMap" type="com.sitech.cmap.dao.simple.test.po.PaasHelpManual">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="utc_create" jdbcType="TIMESTAMP" property="utcCreate" />
+    <result column="md_source" jdbcType="VARCHAR" property="mdSource" />
+    <result column="md_html" jdbcType="VARCHAR" property="mdHtml" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="catalog_code" jdbcType="VARCHAR" property="catalogCode" />
+  </resultMap>
+</mapper>

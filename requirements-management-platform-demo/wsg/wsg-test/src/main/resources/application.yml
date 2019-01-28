@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: production
+  application:
+    name: test-service
+    version: 1.0.0
+swagger:
+  ui:
+    title: 敏捷开发平台外围接口Api文档
+    description: Wsg层暴露Api
+    termsOfServiceUrl: http://www.si-tech.com.cn
+    contact:
+      name: licf_csd
+      email: licf_csd@si-tech.com.cn
+    version: 1.0
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF" xmlns:xi="http://www.w3.org/2001/XInclude" name="XIncludeDemo" 
+	monitorInterval="30" packages="com.sitech.csd.cmap.log4j2.test">
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level [%logger{36}] - %msg%n" />
+		</Console>
+		
+		<!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
+        <!-- <File name="log" fileName="log/test.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level [%class{36}] %L %M - %msg%xEx%n"/>
+        </File>
+
+		<File name="log1" fileName="log/test1.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level [%class{36}] %L %M - %msg%xEx%n"/>
+        </File>  -->
+        
+		<!-- <Socket name="socket" host="localhost" port="9500">
+		</Socket> -->
+
+        <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <!-- <RollingFile name="RollingFile" fileName="logs/app.log" 
+                     filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level [%class{36}] %L %M - %msg%xEx%n"/>
+            
+            <Policies>
+            	<SizeBasedTriggeringPolicy size="50MB" />
+            	<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+        
+        <xi:include href="log4j-xinclude-log1.xml" /> 
+		<xi:include href="log4j-xinclude-log.xml" />  -->
+
+		<!-- <Routing name="Routing">
+	      <Routes pattern="$${ctx:moduleName}">
+	        <Route>
+	         <RollingFile name="user" append="true" fileName="users/${ctx:moduleName}.txt"
+	             filePattern="users/archive/${ctx:moduleName}-%d{MM-dd-yyyy}-%i.txt.gz">
+	            <PatternLayout>
+	              <pattern>%d{ISO8601} [%t] %p %c %L - %m%n</pattern>
+	            </PatternLayout>
+	            <Policies>
+	              <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+	              <SizeBasedTriggeringPolicy size="50MB"/>
+	            </Policies>
+	          </RollingFile>
+	        </Route>
+	      </Routes>
+	    </Routing> -->
+	    
+	</appenders>
+	
+	<loggers>
+		<!-- <logger name="cn.lsw.base.log4j2.Hello" level="trace"
+			additivity="false">
+			<appender-ref ref="Console" />
+		</logger> -->
+
+		<!-- <logger name="log" level="trace"
+			additivity="false">
+			<appender-ref ref="log" />
+		</logger>
+		
+		<logger name="log1" level="trace"
+			additivity="false">
+			<appender-ref ref="log1" />
+		</logger>  -->
+		
+		<root level="trace">
+			<appender-ref ref="Console" />
+			<!-- <appender-ref ref="Routing" /> -->
+			<!-- <appender-ref ref="RollingFile" /> -->
+			<!-- <appender-ref ref="log" />
+			<appender-ref ref="log1" /> -->
+		</root>
+	</loggers>
+</configuration> 

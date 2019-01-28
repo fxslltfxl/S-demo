@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wsg-top</artifactId>
+        <groupId>com.sitech.cmap.requirements-management-platform.wsg</groupId>
+        <version>3.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wsg-test</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>jsr311-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.sitech.cas</groupId>
+            <artifactId>smartcity-session-util</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.dao.groupid}</groupId>
+            <artifactId>dao-test</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.10-FINAL</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.10-FINAL</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>${framework.groupid}</groupId>-->
+            <!--<artifactId>fw-util-zk</artifactId>-->
+            <!--<version>${framework.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>${framework.groupid}</groupId>-->
+            <!--<artifactId>fw-util-message-queue-rabbit</artifactId>-->
+            <!--<version>${framework.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${framework.groupid}</groupId>
+            <artifactId>wsg-extension</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sitech.framework.athena</groupId>-->
+            <!--<artifactId>athena-log4j2</artifactId>-->
+            <!--<version>1.0.0</version>-->
+        <!--</dependency>-->
+    </dependencies>
+
+</project>
